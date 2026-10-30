@@ -1,5 +1,5 @@
 export declare class Recipe {
-    id: string;
+    id: number;
     title: string;
     description: string;
     isFavorite: boolean;

@@ -16,6 +16,9 @@ const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
 const recipe_entity_1 = require("./recipes/entities/recipe.entity");
 const users_module_1 = require("./users/users.module");
+const auth_controller_1 = require("./auth/auth.controller");
+const auth_service_1 = require("./auth/auth.service");
+const user_entity_1 = require("./users/entities/user.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -34,7 +37,7 @@ exports.AppModule = AppModule = __decorate([
                     signOptions: { expiresIn: '30min' },
                 }),
             }),
-            typeorm_1.TypeOrmModule.forFeature([recipe_entity_1.Recipe]),
+            typeorm_1.TypeOrmModule.forFeature([recipe_entity_1.Recipe, user_entity_1.User]),
             typeorm_1.TypeOrmModule.forRootAsync({
                 imports: [config_1.ConfigModule],
                 inject: [config_1.ConfigService],
@@ -52,8 +55,8 @@ exports.AppModule = AppModule = __decorate([
             recipes_module_1.RecipesModule,
             users_module_1.UsersModule
         ],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        controllers: [app_controller_1.AppController, auth_controller_1.AuthController],
+        providers: [app_service_1.AppService, auth_service_1.AuthService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

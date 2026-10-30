@@ -7,6 +7,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Recipe } from './recipes/entities/recipe.entity';
 import { UsersModule } from './users/users.module';
+import { AuthController } from './auth/auth.controller';
+import { AuthService } from './auth/auth.service';
+import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [
@@ -23,7 +26,7 @@ import { UsersModule } from './users/users.module';
         signOptions: { expiresIn: '30min' },
       }),
     }),
-    TypeOrmModule.forFeature([Recipe]),
+    TypeOrmModule.forFeature([Recipe, User]),
 
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -44,7 +47,7 @@ import { UsersModule } from './users/users.module';
 
     UsersModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController , AuthController],
+  providers: [AppService , AuthService],
 })
 export class AppModule {}

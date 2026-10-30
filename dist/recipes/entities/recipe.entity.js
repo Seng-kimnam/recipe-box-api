@@ -20,7 +20,7 @@ let Recipe = class Recipe {
 exports.Recipe = Recipe;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], Recipe.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
@@ -35,6 +35,6 @@ __decorate([
     __metadata("design:type", Boolean)
 ], Recipe.prototype, "isFavorite", void 0);
 exports.Recipe = Recipe = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)("recipes")
 ], Recipe);
 //# sourceMappingURL=recipe.entity.js.map

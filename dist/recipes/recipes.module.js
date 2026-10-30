@@ -10,12 +10,14 @@ exports.RecipesModule = void 0;
 const common_1 = require("@nestjs/common");
 const recipes_service_1 = require("./recipes.service");
 const recipes_controller_1 = require("./recipes.controller");
+const recipe_entity_1 = require("./entities/recipe.entity");
+const typeorm_1 = require("@nestjs/typeorm");
 let RecipesModule = class RecipesModule {
 };
 exports.RecipesModule = RecipesModule;
 exports.RecipesModule = RecipesModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [typeorm_1.TypeOrmModule.forFeature([recipe_entity_1.Recipe])],
         controllers: [recipes_controller_1.RecipesController],
         providers: [recipes_service_1.RecipesService],
         exports: [recipes_service_1.RecipesService]
