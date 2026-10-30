@@ -5,7 +5,7 @@ export class Recipe {
 
 
     @PrimaryGeneratedColumn()
-    id: string;
+    id: number;
 
     @Column()
     title: string;
