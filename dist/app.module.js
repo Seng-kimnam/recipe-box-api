@@ -37,7 +37,6 @@ exports.AppModule = AppModule = __decorate([
                     signOptions: { expiresIn: '30min' },
                 }),
             }),
-            typeorm_1.TypeOrmModule.forFeature([recipe_entity_1.Recipe, user_entity_1.User]),
             typeorm_1.TypeOrmModule.forRootAsync({
                 imports: [config_1.ConfigModule],
                 inject: [config_1.ConfigService],
@@ -52,6 +51,7 @@ exports.AppModule = AppModule = __decorate([
                     autoLoadEntities: true,
                 }),
             }),
+            typeorm_1.TypeOrmModule.forFeature([recipe_entity_1.Recipe, user_entity_1.User]),
             recipes_module_1.RecipesModule,
             users_module_1.UsersModule
         ],

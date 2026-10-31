@@ -26,7 +26,6 @@ import { User } from './users/entities/user.entity';
         signOptions: { expiresIn: '30min' },
       }),
     }),
-    TypeOrmModule.forFeature([Recipe, User]),
 
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -42,7 +41,7 @@ import { User } from './users/entities/user.entity';
         autoLoadEntities: true,
       }),
     }),
-
+    TypeOrmModule.forFeature([Recipe, User]),
     RecipesModule,
 
     UsersModule
