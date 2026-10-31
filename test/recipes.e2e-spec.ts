@@ -42,7 +42,7 @@ describe('Recipes (e2e)', () => {
     expect(token).toBeDefined();
 
     const created = await request(app.getHttpServer())
-      .post('/tasks')
+      .post('/recipes')
       .set('Authorization', `Bearer ${token}`)
       .send({ title: 'Written by a test' })
       .expect(201);

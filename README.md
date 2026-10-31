@@ -12,7 +12,7 @@ This application is about recipe box api which is the rest api build for recipe 
 
 # auth
 POST [register new user](http://localhost:3000/auth/register)
-POST [Login for token](http://localhost:3000/auth/login)
+POST [Login for to](http://localhost:3000/auth/login)
 
 
 # recipe
