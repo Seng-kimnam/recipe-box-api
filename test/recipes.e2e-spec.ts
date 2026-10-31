@@ -12,7 +12,7 @@ describe('Recipes (e2e)', () => {
     }).compile();
 
     app = moduleRef.createNestApplication();
-    app.useGlobalPipes(new ValidationPipe()); // main.ts doesn't run in tests
+    app.useGlobalPipes(new ValidationPipe());
     await app.init();
   });
 
@@ -20,8 +20,8 @@ describe('Recipes (e2e)', () => {
     await app.close();
   });
 
-  it('GET /recipes returns 200', () => {
-    return request(app.getHttpServer()).get('/recipes').expect(200);
+  it('GET /recipes without a token returns 401', () => {
+    return request(app.getHttpServer()).get('/recipes').expect(401);
   });
 
   it('POST /recipes without a token returns 401', () => {
@@ -44,7 +44,11 @@ describe('Recipes (e2e)', () => {
     const created = await request(app.getHttpServer())
       .post('/recipes')
       .set('Authorization', `Bearer ${token}`)
-      .send({ title: 'Written by a test' })
+      .send({
+        title: 'Written by a test',
+        description: 'A recipe created by the E2E test',
+        isFavorite: false,
+      })
       .expect(201);
 
     expect(created.body.title).toBe('Written by a test');
